@@ -63,13 +63,13 @@ Generator
 Users must first download the project using **Git**.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Generator.git
+git clone https://github.com/rohit-singh-git/Face-Consistent-Image-Generator.git
 ```
 
 Move into the project directory:
 
 ```bash
-cd Generator
+cd Face-Consistent-Image-Generator
 ```
 
 ---
