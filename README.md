@@ -1,6 +1,4 @@
-
 ---
-
 # 🎨 Face-Consistent Image Generator
 
 A **Streamlit-based AI image generator** that produces **face-consistent images** using **Stable Diffusion 1.5 + IP-Adapter**.
@@ -8,18 +6,17 @@ A **Streamlit-based AI image generator** that produces **face-consistent images*
 The application generates different scenes while **preserving the identity of a reference face**.
 
 The model loads **once and remains in GPU memory**, making repeated generations fast.
-
 ---
 
 # ✨ Features
 
-* 🎭 Face identity preservation using IP-Adapter
-* 🧠 Stable Diffusion 1.5 image generation
-* ⚡ GPU accelerated inference
-* 🎛 Adjustable generation parameters
-* 🔁 Model loaded once and reused
-* 📦 Fully reproducible dependency installation using **uv lock file**
-* 🐍 Portable **Python 3.10.6 included inside project**
+- 🎭 Face identity preservation using IP-Adapter
+- 🧠 Stable Diffusion 1.5 image generation
+- ⚡ GPU accelerated inference
+- 🎛 Adjustable generation parameters
+- 🔁 Model loaded once and reused
+- 📦 Fully reproducible dependency installation using **uv lock file**
+- 🐍 Portable **Python 3.10.6 included inside project**
 
 ---
 
@@ -139,11 +136,61 @@ Explanation:
 
 ---
 
-# 6️⃣ Run the Application
+Good idea 👍 Adding a **model download step** makes the project reproducible so users don't have to manually download the models.
+
+You should place it **after Step 5 (Install Dependencies)**.
+Here is the clean section you can add to your README.
+
+---
+
+# 6️⃣ Download Required Models
+
+After installing dependencies, download the required models using the provided script.
+
+Run:
+
+```bash
+python model_download.py
+```
+
+This script will automatically download the following models from Hugging Face:
+
+```
+models/
+├── ip-adapter-sd15
+│   └── IP-Adapter weights
+│
+└── sd15-realistic
+    └── Stable Diffusion 1.5 Realistic Vision model
+```
+
+The download may take several minutes depending on your internet speed because the models are **several gigabytes in size**.
+
+Once the download completes, the folder structure will look like this:
+
+```
+models
+│
+├── ip-adapter-sd15
+│   ├── ip-adapter-full-face_sd15.bin
+│   └── image_encoder
+│
+└── sd15-realistic
+    ├── scheduler
+    ├── text_encoder
+    ├── tokenizer
+    ├── unet
+    ├── vae
+    └── model_index.json
+```
+
+---
+
+# 7️⃣ Run the Application
 
 Start the Streamlit app:
 
-```
+```bash
 streamlit run app.py
 ```
 
@@ -152,6 +199,18 @@ Open in browser:
 ```
 http://localhost:8501
 ```
+
+---
+
+✅ **Tip for users**
+
+If model download fails due to network interruption, simply run the command again:
+
+```bash
+python model_download.py
+```
+
+The script will **resume downloading missing files automatically**.
 
 ---
 
@@ -167,10 +226,10 @@ my_face.jpg
 
 2️⃣ Adjust generation settings
 
-* IP Adapter strength
-* Steps
-* Guidance scale
-* Image resolution
+- IP Adapter strength
+- Steps
+- Guidance scale
+- Image resolution
 
 3️⃣ Click **Generate Image**
 
@@ -257,9 +316,33 @@ models/sd15-realistic
 
 # 🧾 Built With
 
-* Streamlit
-* PyTorch
-* Stable Diffusion
-* Diffusers
+- Streamlit
+- PyTorch
+- Stable Diffusion
+- Diffusers
+
+---
+
+# 🤝 Contributions
+
+Contributions are welcome!
+
+If you are experienced with **computer vision, diffusion models, or face recognition**, you are encouraged to improve the **face-consistency logic** used in this project.
+
+Possible areas of improvement include:
+
+- Improving **identity preservation accuracy**
+- Better **face embedding extraction**
+- Enhancing **IP-Adapter integration**
+- Reducing **identity drift across generations**
+- Supporting **multiple reference images**
+
+If you develop improvements that make the generated faces **more accurate or stable**, please consider submitting a **pull request**.
+
+Your contributions can help make this project more reliable for everyone.
+
+---
+
+⭐ If you find this project useful, please consider **starring the repository** to support further development.
 
 ---
